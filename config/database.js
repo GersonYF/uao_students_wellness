@@ -1,4 +1,6 @@
 const { Sequelize } = require('sequelize');
+const UserModel = require('./models/user.model');
+const ProfileModel = require('./models/profile.model');
 
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
@@ -7,16 +9,13 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   logging: false,
 });
 
-/* const Notification = NotificationModel(sequelize, Sequelize);
-const Task = TaskModel(sequelize, Sequelize);
 const User = UserModel(sequelize, Sequelize);
+const Profile = ProfileModel(sequelize, Sequelize);
 
-Task.associate({ User, Notification });
-User.hasMany(Task, { foreignKey: 'assignedUserId', as: 'tasks' }); */
+Profile.belongsTo(User);
+User.hasOne(Profile);
 
 module.exports = {
-/*  Notification,
-  Task,
-  User, */
+  User,
   sequelize
 };

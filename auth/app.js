@@ -15,7 +15,7 @@ const db = require('./config/database');
 db.sequelize.sync();
 
 // Rutas
-app.use('/api/users', require('./app/routes/user.routes'));
+app.use('/api/auth', require('./app/routes/auth.routes'));
 
 app.listen(port, () => {
   logger.info(`Servidor corriendo en el puerto ${port}`);
