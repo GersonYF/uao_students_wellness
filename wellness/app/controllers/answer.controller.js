@@ -75,7 +75,6 @@ exports.getAnswersByUser = async (req, res) => {
 };
 
 // crear una respuesta
-// crear una respuesta
 exports.createAnswer = async (req, res) => {
   const { questionId, selectedOptions, answer } = req.body;
   const userId = req.userId;

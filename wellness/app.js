@@ -15,8 +15,8 @@ const db = require('../config/database');
 db.sequelize.sync();
 
 // Rutas
-app.use('/api/answers', require('./app/routes/answer.routes'));
-app.use('/api/questions', require('./app/routes/question.routes'));
+app.use('/api/wellness/answers', require('./app/routes/answer.routes'));
+app.use('/api/wellness/questions', require('./app/routes/question.routes'));
 
 app.listen(port, () => {
   logger.info(`Servidor corriendo en el puerto ${port}`);
