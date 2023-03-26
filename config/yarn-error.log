@@ -1,0 +1,53 @@
+Arguments: 
+  C:\Program Files (x86)\nodejs\node.exe C:\Users\Yeezushawk\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Users\Yeezushawk\anaconda3;C:\Users\Yeezushawk\anaconda3\Library\mingw-w64\bin;C:\Users\Yeezushawk\anaconda3\Library\usr\bin;C:\Users\Yeezushawk\anaconda3\Library\bin;C:\Users\Yeezushawk\anaconda3\Scripts;C:\Users\Yeezushawk\anaconda3\bin;C:\Users\Yeezushawk\anaconda3\condabin;C:\Program Files\OpenSSH;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Users\Yeezushawk\AppData\Local\Programs\Python\Python310\Scripts;C:\Users\Yeezushawk\AppData\Local\Programs\Python\Python310;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\libnvvp;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\NVIDIA Corporation\Nsight Compute 2022.2.0;C:\Program Files (x86)\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\HashiCorp\Vagrant\bin;C:\Users\Yeezushawk\AppData\Local\Microsoft\WindowsApps;C:\Users\Yeezushawk\AppData\Local\Programs\Microsoft VS Code\bin;C:\spark\bin;D:\SparkJRE\bin;C:\Users\Yeezushawk\AppData\Roaming\npm;.
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.15.1
+
+Platform: 
+  win32 ia32
+
+Trace: 
+  SyntaxError: D:\Data Science\Dashboards - Reports\Clases\Redes\micro_parcial_rest\config\package.json: Unexpected token } in JSON at position 451
+      at JSON.parse (<anonymous>)
+      at C:\Users\Yeezushawk\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\Yeezushawk\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\Yeezushawk\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "config",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.19.0",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "express-validator": "^6.15.0",
+      "jimp": "^0.22.7",
+      "jsonwebtoken": "^8.5.1",
+      "pg": "^8.7.1",
+      "pg-hstore": "^2.3.4",
+      "sequelize": "^6.6.7",
+      "uuid": "^9.0.0",
+      "winston": "^3.8.2"
+    }
+  }
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
