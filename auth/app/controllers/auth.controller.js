@@ -4,15 +4,7 @@ const { validationResult } = require('express-validator');
 
 exports.me = async (req, res) => {
   try {
-    const user = await User.findByPk(req.userId, {
-      attributes: ['id', 'fullname', 'email', 'is_staff', 'is_superuser'],
-    });
-
-    if (!user) {
-      return res.status(404).json({ message: 'Usuario no encontrado' });
-    }
-
-    res.status(200).json(user);
+    res.status(200).json(req.user);
   } catch (err) {
     res.status(500).json({ message: 'Error al obtener el usuario', error: err.message });
   }

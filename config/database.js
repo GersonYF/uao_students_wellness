@@ -4,6 +4,7 @@ const ProfileModel = require('./models/profile.model');
 const AnswerModel = require('./models/answer.model');
 const OptionModel = require('./models/option.model');
 const QuestionModel = require('./models/question.model');
+const QuestionaryModel = require('./models/questionary.model');
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
@@ -16,10 +17,12 @@ const Profile = ProfileModel(sequelize, Sequelize);
 const Answer = AnswerModel(sequelize, Sequelize);
 const Option = OptionModel(sequelize, Sequelize);
 const Question = QuestionModel(sequelize, Sequelize);
+const Questionary = QuestionaryModel(sequelize, Sequelize);
 
 Profile.belongsTo(User);
 User.hasOne(Profile);
-User.hasMany(Answer);
+
+User.hasMany(Questionary, { as: 'questionaries' });
 
 Question.hasMany(Option, { as: 'options' });
 Question.hasMany(Answer, { as: 'question_answers' });
@@ -27,7 +30,10 @@ Question.hasMany(Answer, { as: 'question_answers' });
 Option.belongsTo(Question);
 Option.belongsToMany(Answer, { through: 'answer_options' });
 
-Answer.belongsTo(User);
+Questionary.belongsTo(User);
+Questionary.hasMany(Answer);
+
+Answer.belongsTo(Questionary);
 Answer.belongsTo(Question);
 Answer.belongsToMany(Option, { through: 'answer_options' });
 
@@ -37,5 +43,6 @@ module.exports = {
   Answer,
   Option,
   Question,
+  Questionary,
   sequelize
 };

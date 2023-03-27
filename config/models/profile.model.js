@@ -4,15 +4,16 @@ const { v4: uuidv4 } = require('uuid');
 const Jimp = require('jimp');
 
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
   const Profile = sequelize.define('Profile', {
     id: {
-      type: Sequelize.UUID,
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
-      defaultValue: Sequelize.UUIDV4
+      autoIncrement: true
     },
     photo: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: true,
       defaultValue: null,
       validate: {

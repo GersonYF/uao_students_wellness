@@ -1,20 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-  const Option = sequelize.define('Option', {
+  const Questionary = sequelize.define('Questionary', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    text: {
-      type: DataTypes.STRING(200),
+    title: {
+      type: Sequelize.DataTypes.STRING,
       allowNull: false
-    }
+    },
   }, {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   });
 
-  return Option;
-};
+  return Questionary;
+}

@@ -17,6 +17,8 @@ db.sequelize.sync();
 // Rutas
 app.use('/api/wellness/answers', require('./app/routes/answer.routes'));
 app.use('/api/wellness/questions', require('./app/routes/question.routes'));
+app.use('/api/wellness/questionary', require('./app/routes/questionary.routes'));
+
 
 app.listen(port, () => {
   logger.info(`Servidor corriendo en el puerto ${port}`);
