@@ -9,6 +9,9 @@ export const useUserContext = () => {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [selectedQuestionary, setSelectedQuestionary] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [questionaries, setQuestionaries] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   const loginUser = (userInfo) => {
@@ -22,11 +25,17 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
+        selectedQuestionary,
+        questionaries,
         user,
         showModal,
+        selectedCategory,
         loginUser,
         logoutUser,
-        setShowModal
+        setSelectedQuestionary,
+        setQuestionaries,
+        setShowModal,
+        setSelectedCategory
       }}
     >
       {children}

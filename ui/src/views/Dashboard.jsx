@@ -2,6 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import ModalSke from '../components/ModalSke';
+import DashboardBody from '../components/DashboardBody';
 import { useUserContext } from '../UserContext';
 import { API_createTask, API_fetchAsignedTaks } from '../api';
 
@@ -12,6 +13,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <DashboardBody />
       <ModalSke show={showModal} onHide={onHide} />
     </>
   )

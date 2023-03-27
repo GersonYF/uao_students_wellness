@@ -1,33 +1,33 @@
 const bcrypt = require('bcryptjs');
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
-      type: Sequelize.DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     fullname: {
-      type: Sequelize.DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     email: {
-      type: Sequelize.DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
     password: {
-      type: Sequelize.DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     is_staff: {
-      type: Sequelize.DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
     },
     is_superuser: {
-      type: Sequelize.DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
     }
