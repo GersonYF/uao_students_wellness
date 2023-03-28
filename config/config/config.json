@@ -1,23 +1,14 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "wellness_uao",
-    "host": "127.0.0.1",
+    "url": "postgres://postgres:postgres@127.0.0.1:5432/wellness_uao",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "wellness_uao",
-    "host": "127.0.0.1",
+    "url": "postgres://postgres:postgres@127.0.0.1:5432/wellness_uao",
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "wellness_uao",
-    "host": "127.0.0.1",
+    "url": "postgres://postgres:postgres@127.0.0.1:5432/wellness_uao",
     "dialect": "postgres"
   }
 }

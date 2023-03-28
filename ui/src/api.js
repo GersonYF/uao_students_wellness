@@ -34,3 +34,33 @@ export async function API_fetchUserData(token) {
     throw new Error(data.message);
   }
 }
+
+export async function API_fetchQuestionCategories(token) {
+  const response = await fetch(`${API_URL.wellness}/questions/categories`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}
+
+export async function API_fetchQuestionsByCategory(token, category) {
+  const response = await fetch(`${API_URL.wellness}/questions?root_category=${category}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}

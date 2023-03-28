@@ -1,29 +1,56 @@
-// src/components/TrelloBoard.js
-
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { useUserContext } from '../UserContext';
 import QuestionaryBody from '../components/QuestionaryBody';
 import QuestionaryCategory from '../components/QuestionaryCategory';
+import { Container, Row, Col } from 'react-bootstrap';
+import { API_fetchQuestionCategories, API_fetchQuestionsByCategory } from '../api';
+import CategoryList from '../components/CategoryList';
 
 const Questionary = () => {
-  const { user, selectedCategory, selectedQuestionary } = useUserContext();
+  const { user, selectedCategory, setCategories } = useUserContext();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // fetch data
-  }, []);
+    async function fetchData() {
+      try {
+        const categories = await API_fetchQuestionCategories(user.token);
+        setCategories(categories);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [setCategories]);
 
-  if (!selectedQuestionary) {
-    return <Loading />
+  if (isLoading) {
+    return <Loading />;
   }
   
   return (
-    
     <>
-      {!!selectedCategory && <QuestionaryBody title={selectedQuestionary.title} date={selectedQuestionary.date} categories={[]} />}
-      {selectedCategory && <QuestionaryCategory category={selectedCategory} questions={selectedQuestionary.questions} /> }
+      <Container fluid>
+        {!!selectedCategory === false && <Row>
+          <Col xs={4}>
+            <img src={process.env.PUBLIC_URL + 'nurse.svg'} alt="Enfermera" />
+            <h1>Nuevo Ingreso</h1>
+            <p>Escoge una de las siguientes opciones</p>
+          </Col>
+          <Col>
+            <CategoryList />
+          </Col>
+        </Row>}
+        {!!selectedCategory && (
+          <Row>
+            <Col>
+              <QuestionaryBody />
+            </Col>
+          </Row>
+        )}
+      </Container>
     </>
-  )
+  );
 };
 
 export default Questionary;

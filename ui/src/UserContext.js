@@ -12,7 +12,10 @@ export const UserProvider = ({ children }) => {
   const [selectedQuestionary, setSelectedQuestionary] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [questionaries, setQuestionaries] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [answers, setAnswers] = useState([]);
 
   const loginUser = (userInfo) => {
     setUser(userInfo);
@@ -30,12 +33,18 @@ export const UserProvider = ({ children }) => {
         user,
         showModal,
         selectedCategory,
+        categories,
+        questions,
+        answers,
         loginUser,
         logoutUser,
         setSelectedQuestionary,
         setQuestionaries,
         setShowModal,
-        setSelectedCategory
+        setSelectedCategory,
+        setCategories,
+        setQuestions,
+        setAnswers
       }}
     >
       {children}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useUserContext } from '../UserContext';
 
 const Navbar = () => {
-  const { user, setShowModal } = useUserContext();
+  const { user } = useUserContext();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,12 +25,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className='nav-item'>
-            <button
-                className="btn btn-primary"
-                onClick={() => setShowModal(true)}
-              >
+              <Link className="btn btn-primary" to="/questionary">
                 <span className="bi bi-plus"></span>&nbsp;Crear nuevo formulario
-              </button>
+              </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/notifications">

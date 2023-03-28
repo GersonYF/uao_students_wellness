@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     category: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    root_category: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     timestamps: true,

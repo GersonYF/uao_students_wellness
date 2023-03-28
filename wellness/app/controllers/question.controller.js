@@ -2,12 +2,12 @@ const { Question } = require('../../../config/database');
 
 // obtener todas las preguntas o filtrar por categoría
 exports.getAllQuestions = async (req, res) => {
-  const { category } = req.query;
+  const { root_category } = req.query;
 
   try {
     let questions;
-    if (category) {
-      questions = await Question.findAll({ where: { category } });
+    if (root_category) {
+      questions = await Question.findAll({ where: { root_category } });
     } else {
       questions = await Question.findAll();
     }
@@ -21,7 +21,7 @@ exports.getAllQuestions = async (req, res) => {
 exports.getUniqueCategories = async (req, res) => {
   try {
     const categories = await Question.findAll({
-      attributes: [[Question.sequelize.fn('DISTINCT', Question.sequelize.col('category')), 'category']]
+      attributes: [[Question.sequelize.fn('DISTINCT', Question.sequelize.col('root_category')), 'root_category']]
     });
     res.status(200).json(categories);
   } catch (error) {
