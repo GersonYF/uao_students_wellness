@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../UserContext';
+import { Row, Col } from 'react-bootstrap';
 import { API_fetchQuestionsByCategory } from '../api';
 
 const CategoryList = () => {
@@ -17,13 +18,13 @@ const CategoryList = () => {
   };
 
   return (
-    <ul>
+    <Row>
       {categories.map((category) => (
-        <li key={category.root_category} onClick={() => handleClick(category)}>
+        <Col md={4} key={category.root_category} onClick={() => handleClick(category)}>
           {category.root_category}
-        </li>
+        </Col>
       ))}
-    </ul>
+    </Row>
   );
 };
 

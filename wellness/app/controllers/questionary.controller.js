@@ -6,7 +6,7 @@ exports.getQuestionaries = async (req, res) => {
   try {
     const questionaries = await Questionary.findAll({
       where: { UserId: req.user.id },
-      attributes: ['id', 'name']
+      attributes: ['id', 'title']
     });
     res.status(200).json(questionaries);
   } catch (error) {
@@ -30,10 +30,14 @@ exports.createQuestionary = async (req, res) => {
 // Controller para obtener un cuestionario por id
 exports.getQuestionaryById = async (req, res) => {
   try {
-    const questionary = await Questionary.findByPk({
-      where: { id: req.params.id, user_id: req.user.id },
-      include: [{ model: Answer, include: [{ model: Question, include: Option }] }]
+    const questionary = await Questionary.findByPk(req.params.id, {
+      where: { user_id: req.user.id },
+      include: [
+        { model: Answer, include: [{ model: Question, include: [{ model: Option, as: 'options' }] }] }
+      ]
     });
+    
+    
     res.status(200).json(questionary);
   } catch (error) {
     console.error(error);

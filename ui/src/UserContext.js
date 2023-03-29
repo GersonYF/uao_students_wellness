@@ -16,6 +16,7 @@ export const UserProvider = ({ children }) => {
   const [questions, setQuestions] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [answers, setAnswers] = useState([]);
+  const [questionaryStats, setQuestionaryStats] = useState(null);
 
   const loginUser = (userInfo) => {
     setUser(userInfo);
@@ -36,6 +37,7 @@ export const UserProvider = ({ children }) => {
         categories,
         questions,
         answers,
+        questionaryStats,
         loginUser,
         logoutUser,
         setSelectedQuestionary,
@@ -44,7 +46,8 @@ export const UserProvider = ({ children }) => {
         setSelectedCategory,
         setCategories,
         setQuestions,
-        setAnswers
+        setAnswers,
+        setQuestionaryStats
       }}
     >
       {children}

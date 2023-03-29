@@ -7,19 +7,17 @@ const Question = ({ question, currentQuestion, totalQuestions, onChange, onClick
   return (
     <div>
       <div className="text-center">
-        {currentQuestion+1 > 1 && (
+        {currentQuestion > 1 && (
           <Button variant="link" className="mx-2" onClick={onPrev}>
             <i className="bi bi-chevron-double-left"></i>
           </Button>
         )}
-        {currentQuestion+1 < totalQuestions && (
-          <Button variant="link" className="mx-2" onClick={onNext}>
-            <i className="bi bi-chevron-double-right"></i>
-          </Button>
-        )}
+        <Button variant="link" className="mx-2" onClick={onNext}>
+          <i className="bi bi-chevron-double-right"></i>
+        </Button>
       </div>
       <ProgressBar now={percentComplete} label={`${currentQuestion+1} of ${totalQuestions}`} />
-      <h4>{question.text}</h4>
+      <h4>{question.text || "Pregunta errada"}</h4>
       {question.options && question.options.length > 0 ? (
         <Form>
           <Form.Group>

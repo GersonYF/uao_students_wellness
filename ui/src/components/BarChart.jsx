@@ -1,16 +1,12 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, Label } from 'recharts';
 
-const data = [
-  { category: 'Categoria 1', value: 20 },
-  { category: 'Categoria 2', value: 35 },
-  { category: 'Categoria 3', value: 40 },
-  { category: 'Categoria 4', value: 10 },
-  { category: 'Categoria 5', value: 15 }
-];
 
-const BarChartComponent = () => {
+const BarChartComponent = ({ questionaryStats }) => {
   // Calcular la distribución de los valores
+  const data = Object.keys(questionaryStats).map((category, index) => {
+    return { category, value: parseFloat(questionaryStats[category])*100 };
+  });
   const total = data.reduce((sum, { value }) => sum + value, 0);
   const distribution = total / data.length;
 

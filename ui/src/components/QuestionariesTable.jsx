@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
 
-const QuestionariesTable = ({ questionaries, handleView, handleDelete }) => {
+const QuestionariesTable = ({ questionaries, handleView }) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -17,13 +17,10 @@ const QuestionariesTable = ({ questionaries, handleView, handleDelete }) => {
           <tr key={questionary.id}>
             <td>{questionary.id}</td>
             <td>{questionary.title}</td>
-            <td>{questionary.date}</td>
+            <td>{questionary.created_at}</td>
             <td>
               <Button variant="primary" onClick={() => handleView(questionary.id)}>
                 <i className="bi bi-eye"></i>
-              </Button>
-              <Button variant="danger" onClick={() => handleDelete(questionary.id)}>
-                <i className="bi bi-trash"></i>
               </Button>
             </td>
           </tr>

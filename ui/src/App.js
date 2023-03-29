@@ -9,6 +9,7 @@ import Questionary from './views/Questionary';
 
 import { useUserContext } from './UserContext';
 import './App.css'
+import QuestionaryAnswers from './views/QuestionaryAnswers';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/answers" element={<QuestionaryAnswers />} />
           <Route path="/questionary" element={<Questionary />} />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
