@@ -99,6 +99,21 @@ export async function API_fetchQuestionaries(token) {
   }
 }
 
+export async function API_getQuestionary(token, questionaryId) {
+  const response = await fetch(`${API_URL.wellness}/questionary/${questionaryId}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}
+
 export async function API_addAnswersToQuestionary(token, questionaryId, answers) {
   const response = await fetch(`${API_URL.wellness}/questionary/${questionaryId}/answers`, {
     method: 'POST',

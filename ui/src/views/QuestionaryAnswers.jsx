@@ -16,10 +16,14 @@ const QuestionaryAnswers = () => {
       try {
         const answers = await API_getQuestionaryAnswers(user.token, selectedQuestionary.id);
         setAnswers(answers);
+      }catch (error) {
+        console.log(error);
+      }finally {
+        setIsLoading(false);
       }
     }
     fetchData();
-  }, [setCategories]);
+  }, []);
 
   if (isLoading) {
     return <Loading />;
