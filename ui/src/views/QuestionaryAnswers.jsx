@@ -4,7 +4,7 @@ import { useUserContext } from '../UserContext';
 import QuestionaryBody from '../components/QuestionaryBody';
 import QuestionaryCategory from '../components/QuestionaryCategory';
 import { Container, Row, Col } from 'react-bootstrap';
-import { API_getQuestionaryAnswers, API_createQuestionary } from '../api';
+import { API_getQuestionaryAnswers } from '../api';
 import CategoryList from '../components/CategoryList';
 
 const QuestionaryAnswers = () => {

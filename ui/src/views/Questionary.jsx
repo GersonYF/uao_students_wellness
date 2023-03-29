@@ -4,16 +4,18 @@ import { useUserContext } from '../UserContext';
 import QuestionaryBody from '../components/QuestionaryBody';
 import QuestionaryCategory from '../components/QuestionaryCategory';
 import { Container, Row, Col } from 'react-bootstrap';
-import { API_fetchQuestionCategories, API_fetchQuestionsByCategory } from '../api';
+import { API_fetchQuestionCategories, API_createQuestionary } from '../api';
 import CategoryList from '../components/CategoryList';
 
 const Questionary = () => {
-  const { user, selectedCategory, setCategories } = useUserContext();
+  const { user, selectedCategory, setCategories, setSelectedQuestionary } = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        const questionary = await API_createQuestionary(user.token, {title: `Cuestionario ${new Date().toLocaleString()}`})
+        setSelectedQuestionary(questionary);
         const categories = await API_fetchQuestionCategories(user.token);
         setCategories(categories);
         setIsLoading(false);

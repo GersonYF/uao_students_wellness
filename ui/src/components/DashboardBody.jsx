@@ -9,9 +9,10 @@ import { API_getQuestionary } from '../api';
 
 const DashboardBody = () => {
   const navigate = useNavigate();
-  const { questionaries, questionaryStats, setSelectedQuestionary } = useUserContext();
+  const { user, questionaries, questionaryStats, setSelectedQuestionary } = useUserContext();
   const onHandleView = async (id) => {
     const questionary = await API_getQuestionary(user.token, id);
+    console.log(questionary, "The OG setup")
     setSelectedQuestionary(questionary);
     navigate('/answers'); // redirect to dashboard
   }

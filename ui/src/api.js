@@ -1,5 +1,5 @@
-const urlChanged = "192.168.100.2";
-// const urlChanged = "localhost";
+//const urlChanged = "192.168.100.2";
+const urlChanged = "localhost";
 const API_URL = {
   auth: `http://${urlChanged}:3000/api/auth`,
   users: `http://${urlChanged}:3001/api/users`,
