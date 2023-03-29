@@ -72,3 +72,6 @@ typings/
 
 # Directory added by macOS
 .DS_Store
+
+
+package-lock.json
