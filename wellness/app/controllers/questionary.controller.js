@@ -1,4 +1,5 @@
-const { Answer, Questionary, Option, Question } = require('../../../config/database');
+//const { Answer, Questionary, Option, Question } = require('../../../config/database');
+const { Answer, Questionary, Option, Question } = require('/var/www/html/config/database');
 
 
 // Controller para obtener todos los cuestionarios

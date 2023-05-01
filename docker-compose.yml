@@ -3,15 +3,37 @@ services:
     image: postgres
     #volumes:
     #  - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "32000:5432"
+    expose:
+      - "32000"
     env_file:
       - ./process.env
     networks:
-      - net
+      - uao_students_wellness_net
     #environment:
     #  - POSTGRES_DB=postgres
     #  - POSTGRES_USER=postgres
     #  - POSTGRES_PASSWORD=postgres
     container_name: db
+
+  auth_micro:
+    build: ./auth/.
+    image: davidventep/auth_micro
+    container_name: auth_micro
+    command: npm start
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
+    networks:
+      - uao_students_wellness_net
 
   users_micro:
     build: ./users/.
@@ -29,7 +51,42 @@ services:
     volumes:
       - ./config:/var/www/html/config
     networks:
-      - net
+      - uao_students_wellness_net
+
+  wellness_micro:
+    build: ./wellness/.
+    image: davidventep/wellness_micro
+    container_name: wellness_micro
+    command: npm start
+    ports:
+      - "3002:3002"
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
+    networks:
+      - uao_students_wellness_net
+
+  ui_micro:
+    build: ./ui/.
+    image: davidventep/ui_micro
+    container_name: ui_micro
+    command: npm start
+    ports:
+      - "3003:3003"
+    links:
+      - db
+    depends_on:
+      - db
+      - auth_micro
+      - users_micro
+      - wellness_micro
+    networks:
+      - uao_students_wellness_net
 
 networks:
-  net:
+  uao_students_wellness_net:

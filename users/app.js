@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 //const logger = require('../config/logger');
-const logger = require(`${process.env.CONFIG_URL}/logger`);
+const logger = require(`/var/www/html/config/logger`);
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 //const db = require('../config/database');
-const db = require(`${process.env.CONFIG_URL}/database`);
+const db = require(`/var/www/html/config/database`);
 db.sequelize.sync();
 
 // Rutas

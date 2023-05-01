@@ -1,4 +1,5 @@
-const { Question } = require('../../../config/database');
+//const { Question } = require('../../../config/database');
+const { Question } = require('/var/www/html/config/database');
 
 // obtener todas las preguntas o filtrar por categoría
 exports.getAllQuestions = async (req, res) => {
