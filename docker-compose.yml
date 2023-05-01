@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres
+    #volumes:
+    #  - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - ./process.env
+    networks:
+      - net
+    #environment:
+    #  - POSTGRES_DB=postgres
+    #  - POSTGRES_USER=postgres
+    #  - POSTGRES_PASSWORD=postgres
+    container_name: db
+
+  users_micro:
+    build: ./users/.
+    image: davidventep/users_micro
+    container_name: users_micro
+    command: npm start
+    ports:
+      - "3001:3001"
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
+    networks:
+      - net
+
+networks:
+  net:
