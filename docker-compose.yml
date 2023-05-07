@@ -23,7 +23,7 @@ services:
     container_name: auth_micro
     command: npm start
     ports:
-      - "3000:3000"
+      - "3003:3003"
     links:
       - db
     depends_on:
@@ -77,7 +77,7 @@ services:
     container_name: ui_micro
     command: npm start
     ports:
-      - "3003:3003"
+      - "3000:3000"
     links:
       - db
     depends_on:

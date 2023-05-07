@@ -6,7 +6,7 @@ const cors = require('cors');
 const logger = require('/var/www/html/config/logger');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
