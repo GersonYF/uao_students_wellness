@@ -1,12 +1,12 @@
 services:
   db:
     image: postgres
-    #volumes:
-    #  - ./data/db:/var/lib/postgresql/data
     ports:
       - "32000:5432"
     expose:
       - "32000"
+#    command:
+#      - cp /var/www/html/config/seeders/output.sql:/var/lib/postgresql/data/output.sql
     env_file:
       - ./process.env
     networks:
