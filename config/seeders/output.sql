@@ -450,4 +450,4 @@ INSERT INTO "Options" ("QuestionId", text, created_at, updated_at) VALUES
 (123, 'Litter and recycling', '2023-03-28 04:26:08', '2023-03-28 04:26:08');
 
 INSERT INTO "Users" (id, fullname, email, password, is_staff, is_superuser, created_at, updated_at) VALUES 
-(611, 'David VP', 'david.vente@uao.edu.co', '1234', 1, 1, '2023-06-11 06:11:11', '2023-06-11 06:11:11');
+(611, 'David VP', 'david.vente@uao.edu.co', '1234', true, true, '2023-06-11 06:11:11', '2023-06-11 06:11:11');

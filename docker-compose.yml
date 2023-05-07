@@ -1,10 +1,13 @@
 services:
   db:
     image: postgres
+#    restart: always
     ports:
       - "32000:5432"
     expose:
       - "32000"
+#    volumes:
+#      - ./config/seeders:/var/lib/postgresql/data
 #    command:
 #      - cp /var/www/html/config/seeders/output.sql:/var/lib/postgresql/data/output.sql
     env_file:
@@ -16,6 +19,7 @@ services:
     #  - POSTGRES_USER=postgres
     #  - POSTGRES_PASSWORD=postgres
     container_name: db
+#    command: bash -c " psql -h 192.168.100.2 -p 32000 -U postgres -d wellness_uao -a -f ./config/seeders/output.sql"
 
   auth_micro:
     build: ./auth/.
