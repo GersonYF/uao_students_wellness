@@ -8,7 +8,6 @@ const QuestionariesTable = ({ questionaries, handleView }) => {
         <tr>
           <th>ID</th>
           <th>Título</th>
-          <th>Fecha</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -17,7 +16,6 @@ const QuestionariesTable = ({ questionaries, handleView }) => {
           <tr key={questionary.id}>
             <td>{questionary.id}</td>
             <td>{questionary.title}</td>
-            <td>{questionary.created_at}</td>
             <td>
               <Button variant="primary" onClick={() => handleView(questionary.id)}>
                 <i className="bi bi-eye"></i>

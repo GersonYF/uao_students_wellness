@@ -29,11 +29,6 @@ const Navbar = () => {
                 <span className="bi bi-plus"></span>&nbsp;Crear nuevo formulario
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/notifications">
-                <i className="bi bi-bell"></i>
-              </Link>
-            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

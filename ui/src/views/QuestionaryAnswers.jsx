@@ -3,7 +3,7 @@ import Loading from '../components/Loading';
 import { useUserContext } from '../UserContext';
 import QuestionaryBody from '../components/QuestionaryBody';
 import QuestionaryCategory from '../components/QuestionaryCategory';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import { API_getQuestionaryAnswers } from '../api';
 import CategoryList from '../components/CategoryList';
 
@@ -28,6 +28,18 @@ const QuestionaryAnswers = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+  if(answers.length === 0) {
+    return (
+      <Container>
+        <Row>
+          <Alert key={"not-found-answers"} variant={"warning"}>
+            Este formulario no tiene respuestas!
+          </Alert>
+        </Row>
+      </Container>
+    )
+  }
   
   return (
     <>
@@ -39,6 +51,7 @@ const QuestionaryAnswers = () => {
               <p>{answer.answer}</p>
             </Col>
           ))}
+
         </Row>
       </Container>
     </>

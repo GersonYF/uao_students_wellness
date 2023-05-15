@@ -18,15 +18,15 @@ const DashboardBody = () => {
   }
 
   return (
-    <Container>
+    <Container style={{backgroundColor: "#FFF", paddingTop: "20px"}}>
       <Row>
-        <Col md={6}>
+        {user.is_staff && (<Col md={6}>
           <RadarChart questionaryStats={questionaryStats}/>
-          <BarChartComponent questionaryStats={questionaryStats}/>
-        </Col>
-        <Col>
+          9<BarChartComponent questionaryStats={questionaryStats}/>
+        </Col>)}
+        {!user.is_staff && (<Col>
           <QuestionariesTable questionaries={questionaries} handleView={onHandleView} />
-        </Col>
+        </Col>)}
       </Row>
     </Container>
   );
