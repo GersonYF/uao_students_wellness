@@ -1,8 +1,7 @@
 services:
   db:
-#    image: postgres
-    build: ./db_postgres/.
-    restart: always
+    image: postgres
+#    restart: always
     ports:
       - "32000:5432"
     expose:
