@@ -1,0 +1,14 @@
+{
+  "development": {
+    "url": "postgres://postgres:postgres@127.0.0.1:5432/wellness_uao",
+    "dialect": "postgres"
+  },
+  "test": {
+    "url": "postgres://postgres:postgres@127.0.0.1:5432/wellness_uao",
+    "dialect": "postgres"
+  },
+  "production": {
+    "url": "postgres://postgres:postgres@127.0.0.1:5432/wellness_uao",
+    "dialect": "postgres"
+  }
+}
