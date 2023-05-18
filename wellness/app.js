@@ -18,6 +18,7 @@ db.sequelize.sync();
 app.use('/api/wellness/answers', require('./app/routes/answer.routes'));
 app.use('/api/wellness/questions', require('./app/routes/question.routes'));
 app.use('/api/wellness/questionary', require('./app/routes/questionary.routes'));
+app.use('/api/wellness/dashboard', require('./app/routes/dashboard.routes'));
 
 
 app.listen(port, () => {
