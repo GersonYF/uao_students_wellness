@@ -47,8 +47,8 @@ services:
     image: davidventep/ui_micro
     container_name: ui_micro1
     command: npm start
-    ports:
-      - "3000:3000"
+    # ports:
+      # - "3000:3000"
     links:
       - db
     depends_on:
@@ -67,8 +67,8 @@ services:
     image: davidventep/ui_micro
     container_name: ui_micro2
     command: npm start
-    ports:
-      - "3000:3000"
+    # ports:
+      # - "3000:3000"
     links:
       - db
     depends_on:
