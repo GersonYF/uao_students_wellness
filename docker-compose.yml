@@ -1,7 +1,7 @@
 services:
   db:
-#    image: postgres
-    build: ./db_postgres/.
+   image: postgres
+    # build: ./db_postgres/.
     restart: always
     ports:
       - "32000:5432"
@@ -64,6 +64,7 @@ services:
       - uao_students_wellness_net
   
   ui_micro2:
+    build: ./ui/.
     image: davidventep/ui_micro
     container_name: ui_micro2
     command: npm start
