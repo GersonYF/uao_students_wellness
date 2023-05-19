@@ -23,24 +23,64 @@ services:
     #  - POSTGRES_PASSWORD=postgres
     container_name: db
 #    command: bash -c "cp /var/www/html/config/seeders/output.sql /var/lib/postgresql/data/output.sql"
+  haproxy:
+    build: ./haproxy
+    links:
+      - ui_micro_1
+      - ui_micro_2
+    container_name: haproxy
+    ports:
+      - "5082:80"
 
-  auth_micro:
-    build: ./auth/.
-    image: davidventep/auth_micro
-    container_name: auth_micro
+  ui_micro1:
+    build: ./ui/.
+    image: davidventep/ui_micro
+    container_name: ui_micro
     command: npm start
     ports:
-      - "3003:3003"
+      - "3000:3000"
     links:
       - db
     depends_on:
       - db
-    env_file:
-      - ./process.env
-    volumes:
-      - ./config:/var/www/html/config
+      - auth_micro
+      - users_micro
+      - wellness_micro
     networks:
       - uao_students_wellness_net
+  
+  ui_micro2:
+    image: davidventep/ui_micro
+    container_name: ui_micro
+    command: npm start
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+      - auth_micro
+      - users_micro
+      - wellness_micro
+      - ui_micro1
+    networks:
+      - uao_students_wellness_net
+  #! ui_micro:
+  #!   build: ./ui/.
+  #!   image: davidventep/ui_micro
+  #!   container_name: ui_micro
+  #!   command: npm start
+  #!   ports:
+  #!     - "3000:3000"
+  #!   links:
+  #!     - db
+  #!   depends_on:
+  #!     - db
+  #!     - auth_micro
+  #!     - users_micro
+  #!     - wellness_micro
+  #!   networks:
+  #!     - uao_students_wellness_net
 
   users_micro:
     build: ./users/.
@@ -78,22 +118,26 @@ services:
     networks:
       - uao_students_wellness_net
 
-  ui_micro:
-    build: ./ui/.
-    image: davidventep/ui_micro
-    container_name: ui_micro
+  auth_micro:
+    build: ./auth/.
+    image: davidventep/auth_micro
+    container_name: auth_micro
     command: npm start
     ports:
-      - "3000:3000"
+      - "3003:3003"
     links:
       - db
     depends_on:
       - db
-      - auth_micro
-      - users_micro
-      - wellness_micro
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
     networks:
       - uao_students_wellness_net
+  
+  haproxy:
+    image:  
 
 networks:
   uao_students_wellness_net:
