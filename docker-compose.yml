@@ -23,6 +23,10 @@ services:
     #  - POSTGRES_PASSWORD=postgres
     container_name: db
 #    command: bash -c "cp /var/www/html/config/seeders/output.sql /var/lib/postgresql/data/output.sql"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
   haproxy:
     build: ./haproxy
     links:
@@ -30,7 +34,13 @@ services:
       - ui_micro_2
     container_name: haproxy
     ports:
-      - "5082:80"
+      - "5080:80"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
+    networks:
+      - uao_students_wellness_net
 
   ui_micro1:
     build: ./ui/.
@@ -46,6 +56,10 @@ services:
       - auth_micro
       - users_micro
       - wellness_micro
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == clienteUbuntu
     networks:
       - uao_students_wellness_net
   
@@ -63,6 +77,10 @@ services:
       - users_micro
       - wellness_micro
       - ui_micro1
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == clienteUbuntu
     networks:
       - uao_students_wellness_net
   #! ui_micro:
@@ -97,6 +115,10 @@ services:
       - ./process.env
     volumes:
       - ./config:/var/www/html/config
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
     networks:
       - uao_students_wellness_net
 
@@ -115,6 +137,10 @@ services:
       - ./process.env
     volumes:
       - ./config:/var/www/html/config
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
     networks:
       - uao_students_wellness_net
 
@@ -133,11 +159,12 @@ services:
       - ./process.env
     volumes:
       - ./config:/var/www/html/config
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
     networks:
       - uao_students_wellness_net
-  
-  haproxy:
-    image:  
 
 networks:
   uao_students_wellness_net:
