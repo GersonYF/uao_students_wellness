@@ -1,9 +1,11 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import count, when, col
+import sys
 
 spark = SparkSession.builder.appName("Wellness").getOrCreate()
 
-df = spark.read.csv("/home/vagrant/wellnes-app/wellnesap_spark/school-survey-2018-19-1.csv", header=True, inferSchema=True)
+# df = spark.read.csv("/home/vagrant/wellnes-app/wellnesap_spark/school-survey-2018-19-1.csv", header=True, inferSchema=True)
+df = spark.read.options(header='True', inferSchema='True').csv(sys.argv[1])
 
 # Selecciona las filas desde la tercera (índice 2) y la columna F
 columna_f = df.select('Unnamed: 4').rdd.map(lambda x: x[0]).collect()[2:]
@@ -224,7 +226,8 @@ results_df = spark.createDataFrame([
 
 
 # Guarda los resultados en un archivo CSV
-results_df.write.csv("/home/vagrant/wellnes-app/wellnesap_spark/resultados5.csv", header=True)
+# results_df.write.csv("/home/vagrant/wellnes-app/wellnesap_spark/resultados5.csv", header=True)
+results_df.saveAsTextFile(sys.argv[2])
 
 # Cierra la sesión de Spark
 spark.stop()
