@@ -105,9 +105,45 @@ Ahora lanzaremos la aplicación, para esto, desde **servidorUbuntu** salimos de 
 
 Donde **ubication** es la ubicación donde se encuentra la carpeta *labSpark*, por ejemplo "**/home/vagrant**".
 
-
-
+## 15° Paso:
 Una vez estando directamente dentro de la carpeta, ejecutar el comando `sudo docker compose up`.
-## 2° Paso:
-Después, cargaremos el archivo .sql en postgres: `sudo psql -h 192.168.100.2 -p 32000 -U postgres -d wellness_uao -a -f config/seeders/output.sql`
+
+## 16° Paso:
+Después, cargaremos el archivo .sql en postgres: `sudo psql -h 192.168.100.2 -p 32000 -U postgres -d wellness_uao -a -f config/seeders/output.sql` con contraseña `postgres`.
+
+Para ingresar a la DB, es `sudo psql -h 192.168.100.2 -p 32000 -U postgres -d wellness_uao` con contraseña `postgres`.
+
+# Añadir Usuarios a la Base de Datos
+
+Para insertar usuarios en la base de datos Postgres, necesitarás ejecutar algunos comandos SQL. Por favor, sigue los pasos a continuación para agregar usuarios de ejemplo a tu tabla `User`.
+
+Aquí están los comandos SQL que necesitarás ejecutar:
+
+sql
+INSERT INTO User (id, fullname, email, password, is_staff, is_superuser) 
+VALUES (1, 'Robert Love', 'lance64@example.net', '$2a$10$XzSieHOhgzp1n8nuv2T/6ergVmf6LzxKnR8SIx23Any7gfH52Md0i', false, false);
+
+INSERT INTO User (id, fullname, email, password, is_staff, is_superuser) 
+VALUES (2, 'Ashley Davis', 'carrieturnerstaff@example.com', '$2a$10$XzSieHOhgzp1n8nuv2T/6ergVmf6LzxKnR8SIx23Any7gfH52Md0i', true, false);
+
+INSERT INTO User (id, fullname, email, password, is_staff, is_superuser) 
+VALUES (3, 'Jessica Nielsen', 'johnsonmichaelsuper@example.com', '$2a$10$XzSieHOhgzp1n8nuv2T/6ergVmf6LzxKnR8SIx23Any7gfH52Md0i', false, true);
+
+
+Asegúrate de ajustar los campos según sea necesario para satisfacer tus requisitos específicos de usuario. Ten en cuenta que los valores del campo `password` en los ejemplos están codificados por razones de seguridad. Nunca debes almacenar contraseñas en texto plano en tu base de datos.
+
+Para ejecutar estos comandos SQL:
+
+1. Abre tu interfaz de línea de comandos (CLI) de Postgres.
+2. Conéctate a la base de datos deseada.
+3. Pega cada comando en la CLI y pulsa Enter.
+
+Después de ejecutar estos comandos, deberías tener 3 usuarios insertados en tu tabla `User`. Para verificar la inserción, puedes ejecutar el siguiente comando:
+
+sql
+SELECT * FROM User;
+
+
+Esto mostrará todos los registros en tu tabla `User`, donde deberías ver a los usuarios recién insertados.
+La contraseña es: autonoma1234
 
