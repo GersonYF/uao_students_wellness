@@ -97,10 +97,10 @@ Debemos tener la dirección del dataset que se encuentra dentro de la carpeta *d
 Debemos tener la dirección donde se crearán los resultados del análisis; esta será dentro de la carpeta *uao_students_wellness* en *wellnesap_spark*. A esta se le apodará "**wellnesap_spark**" para referenciarla con facilidad.
 
 ## 14° Paso:
-Ahora lanzaremos la aplicación, para esto desde **servidorUbuntu** salimos de la carpeta *sbin* e ingresamos a la carpeta *bin*, ejecutando el siguiente comando:
+Ahora lanzaremos la aplicación, para esto, desde **servidorUbuntu** salimos de la carpeta *sbin* e ingresamos a la carpeta *bin*, ejecutando el siguiente comando:
 
 ```
-./spark-submit --master spark://192.168.100.2:7077 --conf spark.executor.memory=1g **ubication**/labSpark/app/app.py "*dataset_load*" "..//labSpark/wellnesap_spark"
+./spark-submit --master spark://192.168.100.2:7077 --conf spark.executor.memory=1g **ubication**/labSpark/app/app.py "*dataset_load*" "../../uao_students_wellness/wellnesap_spark"
 ```
 
 Donde **ubication** es la ubicación donde se encuentra la carpeta *labSpark*, por ejemplo "**/home/vagrant**".

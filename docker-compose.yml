@@ -1,6 +1,6 @@
 services:
   db:
-   image: postgres
+    image: postgres
     # build: ./db_postgres/.
     restart: always
     ports:
