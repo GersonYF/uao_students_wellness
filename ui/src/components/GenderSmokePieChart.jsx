@@ -2,11 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import { Card } from 'react-bootstrap';
 
-const GenderSmokeChart = ({ data }) => {
+const SmokingChart = ({ data }) => {
   const ref = useRef();
 
-  const smokingData = data.filter(d => d.Category === 'Smoking');
-  const eCigarretes = data.filter(d => d.Category === 'E-cigarettes');
+  const smokingData = data.filter(d => d.Category === 'Smoking' || d.Category === 'E-cigarettes');
 
   useEffect(() => {
     const svg = d3.select(ref.current);
@@ -16,8 +15,9 @@ const GenderSmokeChart = ({ data }) => {
       width = 460 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
-    const x = d3.scaleBand().range([0, width]).padding(0.2);
+    const x = d3.scaleBand().range([0, width]).padding(0.1);
     const y = d3.scaleLinear().range([height, 0]);
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
 
     const g = svg.append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -25,8 +25,10 @@ const GenderSmokeChart = ({ data }) => {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    x.domain(smokingData.map(d => d.Value));
+    const xDomain = Array.from(new Set(smokingData.map(d => d.Value)));
+    x.domain(xDomain);
     y.domain([0, d3.max(smokingData, d => Number(d.Count))]);
+    color.domain(smokingData.map(d => d.Category));
 
     g.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -46,20 +48,17 @@ const GenderSmokeChart = ({ data }) => {
         .attr("y", d => y(Number(d.Count)))
         .attr("width", x.bandwidth())
         .attr("height", d => height - y(Number(d.Count)))
-        .attr("fill", "#337ab7");
+        .attr("fill", d => color(d.Category));
   }, [data]);
 
   return (
     <Card>
       <Card.Body>
-        <Card.Title>Distribución Fumadores</Card.Title>
+        <Card.Title>Comparación de uso de Cigarrillos y Cigarrillos electrónicos</Card.Title>
         <div ref={ref} />
       </Card.Body>
-      <Card.Footer className="text-danger">
-        {eCigarretes[0]?.Count} Personas afirmaron haber fumado cigarrillos electrónicos
-      </Card.Footer>
     </Card>
   );
 }
 
-export default GenderSmokeChart;
+export default SmokingChart;

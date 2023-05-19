@@ -162,7 +162,7 @@ export async function API_getQuestionaryAnswers(token, questionaryId) {
 }
 
 export async function API_getDashboardCountGender(token) {
-  const response = await fetch(`${API_URL.wellness}/dashboard/counts/gender`, {
+  const response = await fetch(`${API_URL.wellness}/dashboard/counts`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`
