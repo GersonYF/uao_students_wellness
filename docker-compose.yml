@@ -32,6 +32,13 @@ services:
     links:
       - ui_micro1
       - ui_micro2
+    depends_on:
+      - db
+      - auth_micro
+      - users_micro
+      - wellness_micro
+      - ui_micro1
+      - ui_micro2
     container_name: haproxy
     ports:
       - "5080:80"
