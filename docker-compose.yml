@@ -30,8 +30,8 @@ services:
   haproxy:
     build: ./haproxy
     links:
-      - ui_micro_1
-      - ui_micro_2
+      - ui_micro1
+      - ui_micro2
     container_name: haproxy
     ports:
       - "5080:80"
@@ -45,7 +45,7 @@ services:
   ui_micro1:
     build: ./ui/.
     image: davidventep/ui_micro
-    container_name: ui_micro
+    container_name: ui_micro1
     command: npm start
     ports:
       - "3000:3000"
@@ -65,7 +65,7 @@ services:
   
   ui_micro2:
     image: davidventep/ui_micro
-    container_name: ui_micro
+    container_name: ui_micro2
     command: npm start
     ports:
       - "3000:3000"

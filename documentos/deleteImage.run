@@ -3,4 +3,4 @@
 #sudo docker rmi storage_products_micro storage_users_micro storage_orders_micro storage_django_front
 
 sudo docker rm users_micro ui_micro wellness_micro auth_micro db
-sudo docker rmi davidventep/users_micro davidventep/ui_micro davidventep/auth_micro davidventep/wellness_micro davidventep/db
+sudo docker rmi davidventep/users_micro davidventep/ui_micro davidventep/auth_micro davidventep/wellness_micro davidventep/db uao_students_wellness-haproxy uao_students_wellness-db
