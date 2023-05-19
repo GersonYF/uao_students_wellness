@@ -4,6 +4,7 @@ import { useUserContext } from '../UserContext';
 import { Container, Row, Col } from 'react-bootstrap';
 import { API_addAnswersToQuestionary } from '../api';
 import Question from './Question';
+import { categories_translations } from '../utils';
 
 const QuestionaryBody = () => {
   const { user, selectedQuestionary, questions, selectedCategory, setSelectedCategory, setQuestions } = useUserContext();
@@ -51,7 +52,7 @@ const QuestionaryBody = () => {
     <Container>
       {!!selectedCategory && (
         <Row>
-          <h2>{selectedCategory.root_category}</h2>
+          <h2>{categories_translations[selectedCategory.root_category]?.translation}</h2>
           <Question 
             question={questions[questionIndex]}
             currentQuestion={questionIndex}

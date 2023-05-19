@@ -17,6 +17,10 @@ export const UserProvider = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [questionaryStats, setQuestionaryStats] = useState(null);
+  const [genderCounts, setGenderCounts] = useState([])
+  const [smokingCigarretesCounts, setSmokingCigarretesCounts] = useState([])
+  const [alcoholCounts, setAlcoholCounts] = useState([])
+  const [sleepQualityCounts, setSleepQualityCounts] = useState([])
 
   const loginUser = (userInfo) => {
     setUser(userInfo);
@@ -38,6 +42,14 @@ export const UserProvider = ({ children }) => {
         questions,
         answers,
         questionaryStats,
+        genderCounts,
+        smokingCigarretesCounts,
+        alcoholCounts,
+        sleepQualityCounts,
+        setGenderCounts,
+        setSmokingCigarretesCounts,
+        setAlcoholCounts,
+        setSleepQualityCounts,
         loginUser,
         logoutUser,
         setSelectedQuestionary,
@@ -47,7 +59,7 @@ export const UserProvider = ({ children }) => {
         setCategories,
         setQuestions,
         setAnswers,
-        setQuestionaryStats
+        setQuestionaryStats,
       }}
     >
       {children}

@@ -160,3 +160,63 @@ export async function API_getQuestionaryAnswers(token, questionaryId) {
     throw new Error(data.message);
   }
 }
+
+export async function API_getDashboardCountGender(token) {
+  const response = await fetch(`${API_URL.wellness}/dashboard/counts`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}
+
+export async function API_getDashboardCountSmokingCigarretes(token) {
+  const response = await fetch(`${API_URL.wellness}/dashboard/counts/smoking-and-cigarretes`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}
+
+export async function API_getDashboardCountAlcohol(token) {
+  const response = await fetch(`${API_URL.wellness}/dashboard/counts/alcohol-consumption`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}
+
+export async function API_getDashboardCountSleepQuality(token) {
+  const response = await fetch(`${API_URL.wellness}/dashboard/counts/sleep-quality`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+  if (response.ok) {
+    return data;
+  } else {
+    throw new Error(data.message);
+  }
+}

@@ -24,16 +24,13 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className='nav-item'>
-              <Link className="btn btn-primary" to="/questionary">
-                <span className="bi bi-plus"></span>&nbsp;Crear nuevo formulario
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/notifications">
-                <i className="bi bi-bell"></i>
-              </Link>
-            </li>
+            {!user.is_staff && (
+              <li className='nav-item'>
+                <Link className="btn btn-primary" to="/questionary">
+                  <span className="bi bi-plus"></span>&nbsp;Crear nuevo formulario
+                </Link>
+              </li>
+            )}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

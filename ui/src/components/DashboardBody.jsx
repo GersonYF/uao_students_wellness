@@ -6,6 +6,7 @@ import QuestionariesTable from './QuestionariesTable';
 import BarChartComponent from './BarChart';
 import { useUserContext } from '../UserContext';
 import { API_getQuestionary } from '../api';
+import StaffDashboard from './StaffDashboard';
 
 const DashboardBody = () => {
   const navigate = useNavigate();
@@ -17,16 +18,18 @@ const DashboardBody = () => {
     navigate('/answers'); // redirect to dashboard
   }
 
+  if(user.is_staff){
+    return (
+      <StaffDashboard />
+    )
+  }
+
   return (
-    <Container>
+    <Container style={{backgroundColor: "#FFF", paddingTop: "20px"}}>
       <Row>
-        <Col md={6}>
-          <RadarChart questionaryStats={questionaryStats}/>
-          <BarChartComponent questionaryStats={questionaryStats}/>
-        </Col>
-        <Col>
+        {!user.is_staff && (<Col>
           <QuestionariesTable questionaries={questionaries} handleView={onHandleView} />
-        </Col>
+        </Col>)}
       </Row>
     </Container>
   );
