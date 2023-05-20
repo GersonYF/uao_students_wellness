@@ -1,10 +1,10 @@
 # Entregables:
 
 ## Documento:
-https://drive.google.com/file/d/165OnSjK3YdpnihocTJoASmzPjwAxhwiY/view?usp=sharing
+[Enlace del documento en PDF](https://drive.google.com/file/d/165qHfGI9ggK-EEZPdEGArpS-wOwYByzW/view?usp=sharing)
 
 ## Diapositivas:
-https://docs.google.com/presentation/d/1PgvvTkmKyRi18lDxU-DeTAYaH0nQNytDgPLbXNsX_wM/edit?usp=sharing
+[Enlace de las diapositivas](https://docs.google.com/presentation/d/1PgvvTkmKyRi18lDxU-DeTAYaH0nQNytDgPLbXNsX_wM/edit?usp=sharing)
 
 # Para ejecutar el proyecto
 
