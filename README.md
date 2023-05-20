@@ -1,3 +1,11 @@
+# Entregables:
+
+## Documento:
+https://drive.google.com/file/d/165OnSjK3YdpnihocTJoASmzPjwAxhwiY/view?usp=sharing
+
+## Diapositivas:
+https://docs.google.com/presentation/d/1PgvvTkmKyRi18lDxU-DeTAYaH0nQNytDgPLbXNsX_wM/edit?usp=sharing
+
 # Para ejecutar el proyecto
 
 Para la ejecución del proyecto se requiere de un ambiente vagrant con dos máquinas virtuales, la primera llamada **servidorUbuntu** con IP 192.168.100.2 y la segunda **clienteUbuntu** con IP 192.168.100.3.
