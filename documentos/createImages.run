@@ -1,0 +1,5 @@
+sudo docker build -t davidventep/auth_micro auth/.
+sudo docker build -t davidventep/users_micro users/.
+sudo docker build -t davidventep/wellness_micro wellness/.
+sudo docker build -t davidventep/ui_micro ui/.
+sudo docker build -t davidventep/haproxy_micro haproxy/.

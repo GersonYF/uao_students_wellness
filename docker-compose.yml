@@ -18,7 +18,7 @@ services:
           - node.hostname == servidorUbuntu
   haproxy:
     # build: ./haproxy
-    image: uao_students_wellness-haproxy
+    image: davidventep/haproxy_micro
     links:
       - ui_micro1
       - ui_micro2
