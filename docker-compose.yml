@@ -5,30 +5,20 @@ services:
     restart: always
     ports:
       - "32000:5432"
-    expose:
-      - "32000"
-#    volumes:
-#      - ./config:/var/www/html/config
-#    volumes:
-#      - ./config/seeders:/var/lib/postgresql/data/db_sql
-#    command:
-#      - cp /var/www/html/config/seeders/output.sql:/var/lib/postgresql/data/output.sql
+    # expose:
+    #   - "32000"
     env_file:
       - ./process.env
     networks:
       - uao_students_wellness_net
-    #environment:
-    #  - POSTGRES_DB=postgres
-    #  - POSTGRES_USER=postgres
-    #  - POSTGRES_PASSWORD=postgres
     container_name: db
-#    command: bash -c "cp /var/www/html/config/seeders/output.sql /var/lib/postgresql/data/output.sql"
     deploy:
       placement:
         constraints:
           - node.hostname == servidorUbuntu
   haproxy:
-    build: ./haproxy
+    # build: ./haproxy
+    image: uao_students_wellness-haproxy
     links:
       - ui_micro1
       - ui_micro2
@@ -39,7 +29,7 @@ services:
       - wellness_micro
       - ui_micro1
       - ui_micro2
-    container_name: haproxy
+    # container_name: haproxy
     ports:
       - "5080:80"
     deploy:
@@ -50,12 +40,10 @@ services:
       - uao_students_wellness_net
 
   ui_micro1:
-    build: ./ui/.
+    # build: ./ui/.
     image: davidventep/ui_micro
-    container_name: ui_micro1
+    # container_name: ui_micro1
     command: npm start
-    # ports:
-      # - "3000:3000"
     links:
       - db
     depends_on:
@@ -71,12 +59,10 @@ services:
       - uao_students_wellness_net
   
   ui_micro2:
-    build: ./ui/.
+    # build: ./ui/.
     image: davidventep/ui_micro
-    container_name: ui_micro2
+    # container_name: ui_micro2
     command: npm start
-    # ports:
-      # - "3000:3000"
     links:
       - db
     depends_on:
@@ -109,9 +95,9 @@ services:
   #!     - uao_students_wellness_net
 
   users_micro:
-    build: ./users/.
+    # build: ./users/.
     image: davidventep/users_micro
-    container_name: users_micro
+    # container_name: users_micro
     command: npm start
     ports:
       - "3001:3001"
@@ -131,9 +117,9 @@ services:
       - uao_students_wellness_net
 
   wellness_micro:
-    build: ./wellness/.
+    # build: ./wellness/.
     image: davidventep/wellness_micro
-    container_name: wellness_micro
+    # container_name: wellness_micro
     command: npm start
     ports:
       - "3002:3002"
@@ -153,9 +139,9 @@ services:
       - uao_students_wellness_net
 
   auth_micro:
-    build: ./auth/.
+    # build: ./auth/.
     image: davidventep/auth_micro
-    container_name: auth_micro
+    # container_name: auth_micro
     command: npm start
     ports:
       - "3003:3003"
