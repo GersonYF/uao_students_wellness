@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { authMiddleware } = require('../../../config/middlewares');
+//const { authMiddleware } = require('../../../config/middlewares');
+const { authMiddleware } = require('/var/www/html/config/middlewares');
 
 const { getAllQuestions, getUniqueCategories } = require('../controllers/question.controller');
 

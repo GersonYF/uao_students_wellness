@@ -1,4 +1,5 @@
-const { Answer, Questionary, Question, Option } = require('../../../config/database');
+//const { Answer, Questionary, Question, Option } = require('../../../config/database');
+const { Answer, Questionary, Question, Option } = require('/var/www/html/config/database');
 const { validationResult } = require('express-validator');
 
 // Obtener todas las respuestas de un cuestionario

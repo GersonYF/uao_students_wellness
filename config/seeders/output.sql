@@ -448,3 +448,8 @@ INSERT INTO "Options" ("QuestionId", text, created_at, updated_at) VALUES
 (123, 'Gangs', '2023-03-28 04:26:08', '2023-03-28 04:26:08'),
 (123, 'Pupils/students carrying knives/weapons', '2023-03-28 04:26:08', '2023-03-28 04:26:08'),
 (123, 'Litter and recycling', '2023-03-28 04:26:08', '2023-03-28 04:26:08');
+
+INSERT INTO "Users" (id, fullname, email, password, is_staff, is_superuser, created_at, updated_at) VALUES 
+(1, 'Robert Love', 'lance64@example.net', '$2a$10$XzSieHOhgzp1n8nuv2T/6ergVmf6LzxKnR8SIx23Any7gfH52Md0i', false, false, '2023-06-11 06:11:11', '2023-06-11 06:11:11'), 
+(2, 'Ashley Davis', 'carrieturnerstaff@example.com', '$2a$10$XzSieHOhgzp1n8nuv2T/6ergVmf6LzxKnR8SIx23Any7gfH52Md0i', true, false, '2023-06-11 06:11:11', '2023-06-11 06:11:11'), 
+(3, 'Jessica Nielsen', 'johnsonmichaelsuper@example.com', '$2a$10$XzSieHOhgzp1n8nuv2T/6ergVmf6LzxKnR8SIx23Any7gfH52Md0i', false, true, '2023-06-11 06:11:11', '2023-06-11 06:11:11');

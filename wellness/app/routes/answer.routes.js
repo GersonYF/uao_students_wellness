@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { authMiddleware } = require('../../../config/middlewares');
+//const { authMiddleware } = require('../../../config/middlewares');
+const { authMiddleware } = require('/var/www/html/config/middlewares');
 const answerController = require('../controllers/answer.controller');
 
 router.get('/questionary/:questionaryId', authMiddleware, answerController.getAllAnswers);

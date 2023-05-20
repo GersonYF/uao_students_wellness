@@ -64,10 +64,10 @@ const getCSVData = (filePath) => {
 exports.getCombinedData = async (req, res) => {
   try {
     const filePaths = [
-      path.join(__dirname, '..', '..', '..', 'wellnesap_spark', 'resultados5.csv', 'part-00000-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv'),
-      path.join(__dirname, '..', '..', '..', 'wellnesap_spark', 'resultados5.csv', 'part-00001-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv'),
-      path.join(__dirname, '..', '..', '..', 'wellnesap_spark', 'resultados5.csv', 'part-00002-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv'),
-      path.join(__dirname, '..', '..', '..', 'wellnesap_spark', 'resultados5.csv', 'part-00003-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv')
+      path.join(__dirname, 'wellnesap_spark', 'resultados5.csv', 'part-00000-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv'),
+      path.join(__dirname, 'wellnesap_spark', 'resultados5.csv', 'part-00001-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv'),
+      path.join(__dirname, 'wellnesap_spark', 'resultados5.csv', 'part-00002-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv'),
+      path.join(__dirname, 'wellnesap_spark', 'resultados5.csv', 'part-00003-973eaf2d-9a97-4a36-aa8f-849a5ca4d54c-c000.csv')
     ];
 
     const combinedData = [];

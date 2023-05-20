@@ -1,0 +1,166 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "32000:5432"
+    expose:
+      - "32000"
+    env_file:
+      - ./process.env
+    networks:
+      - uao_students_wellness_net
+    container_name: db
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
+  haproxy:
+    build: ./haproxy
+    links:
+      - ui_micro1
+      - ui_micro2
+    depends_on:
+      - db
+      - auth_micro
+      - users_micro
+      - wellness_micro
+      - ui_micro1
+      - ui_micro2
+    container_name: haproxy
+    ports:
+      - "5080:80"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
+    networks:
+      - uao_students_wellness_net
+
+  ui_micro1:
+    build: ./ui/.
+    image: davidventep/ui_micro
+    container_name: ui_micro1
+    command: npm start
+    # ports:
+      # - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+      - auth_micro
+      - users_micro
+      - wellness_micro
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == clienteUbuntu
+    networks:
+      - uao_students_wellness_net
+  
+  ui_micro2:
+    build: ./ui/.
+    image: davidventep/ui_micro
+    container_name: ui_micro2
+    command: npm start
+    # ports:
+      # - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+      - auth_micro
+      - users_micro
+      - wellness_micro
+      - ui_micro1
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == clienteUbuntu
+    networks:
+      - uao_students_wellness_net
+  #! ui_micro:
+  #!   build: ./ui/.
+  #!   image: davidventep/ui_micro
+  #!   container_name: ui_micro
+  #!   command: npm start
+  #!   ports:
+  #!     - "3000:3000"
+  #!   links:
+  #!     - db
+  #!   depends_on:
+  #!     - db
+  #!     - auth_micro
+  #!     - users_micro
+  #!     - wellness_micro
+  #!   networks:
+  #!     - uao_students_wellness_net
+
+  users_micro:
+    build: ./users/.
+    image: davidventep/users_micro
+    container_name: users_micro
+    command: npm start
+    ports:
+      - "3001:3001"
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
+    networks:
+      - uao_students_wellness_net
+
+  wellness_micro:
+    build: ./wellness/.
+    image: davidventep/wellness_micro
+    container_name: wellness_micro
+    command: npm start
+    ports:
+      - "3002:3002"
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
+    networks:
+      - uao_students_wellness_net
+
+  auth_micro:
+    build: ./auth/.
+    image: davidventep/auth_micro
+    container_name: auth_micro
+    command: npm start
+    ports:
+      - "3003:3003"
+    links:
+      - db
+    depends_on:
+      - db
+    env_file:
+      - ./process.env
+    volumes:
+      - ./config:/var/www/html/config
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu
+    networks:
+      - uao_students_wellness_net
+
+networks:
+  uao_students_wellness_net:
